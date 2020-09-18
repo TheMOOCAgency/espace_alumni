@@ -46,7 +46,7 @@ export default function SimpleCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" href={`mailto:${props.email}`}>Contacter</Button>
+        <Button size="small" href={`mailto:${props.email}`}>{window.props.texts.contact}</Button>
       </CardActions>
     </Card>
   );

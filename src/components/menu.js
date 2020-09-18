@@ -83,6 +83,15 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#c8af82',
         marginTop: '20px',
     },
+    MenuTitle: {
+        backgroundColor: '#c8af82',
+        marginTop: '20px',
+    },
+    Menuback: {
+        backgroundColor: '#c8af82',
+        marginTop: '20px',
+        width: '200px',
+    },
     backButton: {
         width: '190px',
     },
@@ -122,21 +131,33 @@ export default function PrimarySearchAppBar(props) {
         document.getElementById('reset_button').style.display = 'none'
     };
 
+    const texts = window.props.texts
+
     return (
         <div className={classes.grow}>
-        <AppBar position="static" className={classes.Menubar}>
+        <AppBar position="static" className={classes.Menuback}>
             <Button size="small" href="https://www.champagne-mooc.com/dashboard" className={classes.backButton}>
-                ← Retour au cours
+            {texts.backToCourse}
             </Button>
+        </AppBar>
+        <AppBar position="static" className={classes.MenuTitle}>
+            <Typography className={classes.title} variant="h4">
+            {texts.title}
+            </Typography>
+        </AppBar>
+        <AppBar position="static" className={classes.Menubar}>
             <Typography className={classes.title} variant="h6">
-            Liste des membres Alumni, utilisez les filtres pour affiner votre recherche
+            {texts.welcome}
+            </Typography>
+            <Typography variant="subtitle1">
+            {texts.welcomeSubtitle}
             </Typography>
             <form className={classes.root} noValidate autoComplete="off">
         <div>
         <TextField
             id="select-city"
             select
-            label="Ville"
+            label={texts.town}
             value={city}
             ref={inputRef}
             onChange={(event) => handleChange(event, 'city')}
@@ -151,7 +172,7 @@ export default function PrimarySearchAppBar(props) {
             <TextField
             id="select-country"
             select
-            label="Pays"
+            label={texts.country}
             value={country}
             onChange={(event) => handleChange(event, 'country')}
             variant="filled"

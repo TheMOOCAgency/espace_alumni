@@ -9,11 +9,6 @@ function App() {
   const [userList, setUserList] = useState([...window.props.users_list]);
   return (
     <div className="App">
-      <header className="App-header">
-        <p className="App-title">
-          Espace Alumni
-        </p>
-      </header>
       <Menu
         savedList={window.props.users_list}
         setUserList={setUserList}
