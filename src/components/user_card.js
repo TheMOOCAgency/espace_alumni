@@ -6,7 +6,7 @@ const useStyles = makeStyles({
     root: {
         minWidth: 275,
         textAlign: 'left',
-        backgroundColor: '#d4cec3',
+        backgroundColor: '#ece9e3',
         marginTop: '20px',
         marginBottom: '20px',
     },
