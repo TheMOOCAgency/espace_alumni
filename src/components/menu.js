@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ClearIcon from '@material-ui/icons/Clear';
+import UnsubscribeModal from './unsubscribeModal'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -95,10 +96,22 @@ const useStyles = makeStyles((theme) => ({
     backButton: {
         width: '190px',
     },
+    MenuUnsubscribe: {
+        width: '500px',
+        margin: '20px auto auto auto',
+        backgroundColor: 'transparent',
+    },
+    unsubscribeButton: {
+        width: '500px',
+        color: 'black',
+        padding: '10px 0px 10px 0px',
+        cursor: 'pointer',
+    },
     resetButton : {
         marginTop: '20px',
         display: 'none',
         position: 'absolute',
+        cursor: 'pointer',
     }
 }));
 
@@ -106,21 +119,51 @@ export default function PrimarySearchAppBar(props) {
     const classes = useStyles();
     const [city, setCity] = React.useState('');
     const [country, setCountry] = React.useState('');
+    const [work, setWork] = React.useState('');
+    const [search, setSearch] = React.useState('');
+    const [open, setOpen] = React.useState(false);
     const inputRef = React.createRef();
+    const handleOpen = () => {
+        setOpen(true);
+    };
+    
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const getSearch = (user) => {
+        const propertiesListy = ['country', 'tell_us_more_again', 'city', 'first_name', 'last_name']
+        let isInList = false
+        propertiesListy.forEach(element => {
+            if (user[element].toLowerCase().includes(search.toLowerCase())) {
+                isInList = true
+            }
+        })
+        return isInList
+    };
+
+    const checkUser = (user) => {
+        const isInFilteredList = (city === '' || user.city === city) && (country === '' || user.country === country) && (work === '' || user.tell_us_more_again === work) && getSearch(user) === true
+        return isInFilteredList
+    };
 
     useEffect(() => {
-        let newList = [...props.savedList]
+        let newList = [...window.props.users_list]
         newList = newList.filter(user => {
-            return (city === '' || user.city === city) && (country === '' || user.country === country)
+            return checkUser(user)
         });
         props.setUserList(newList)
-      }, [city, country]);
+      }, [city, country, work, search]);
 
     const handleChange = (event, type) => {
         if (type ==='city') {
             setCity(event.target.value);
-        } else {
+        } else if (type ==='country') {
             setCountry(event.target.value);
+        } else if (type ==='work') {
+            setWork(event.target.value);
+        } else {
+            setSearch(event.target.value);
         }
         document.getElementById('reset_button').style.display = 'initial'
     };
@@ -128,6 +171,10 @@ export default function PrimarySearchAppBar(props) {
     const resetFilters = () => {
         setCity('');
         setCountry('');
+        setWork('');
+        setSearch('');
+        let newList = [...window.props.users_list]
+        props.setUserList(newList)
         document.getElementById('reset_button').style.display = 'none'
     };
 
@@ -162,37 +209,69 @@ export default function PrimarySearchAppBar(props) {
             ref={inputRef}
             onChange={(event) => handleChange(event, 'city')}
             variant="filled"
-            >
-            {props.cities.map((city, index) => (
-                <MenuItem key={index} value={city}>
-                {city}
-                </MenuItem>
-            ))}
-            </TextField>
-            <TextField
+        >
+        {props.cities.map((city, index) => (
+            <MenuItem key={index} value={city}>
+            {city}
+            </MenuItem>
+        ))}
+        </TextField>
+        <TextField
             id="select-country"
             select
             label={texts.country}
             value={country}
             onChange={(event) => handleChange(event, 'country')}
             variant="filled"
-            >
-            {props.countries.map((country, index) => (
-                <MenuItem key={index} value={country}>
-                {country}
-                </MenuItem>
-            ))}
-            </TextField>
-            <Button 
+        >
+        {props.countries.map((country, index) => (
+            <MenuItem key={index} value={country}>
+            {country}
+            </MenuItem>
+        ))}
+        </TextField>
+        <TextField
+            id="select-work"
+            select
+            label={texts.work}
+            value={work}
+            ref={inputRef}
+            onChange={(event) => handleChange(event, 'work')}
+            variant="filled"
+        >
+        {props.works.map((work, index) => (
+            <MenuItem key={index} value={work}>
+            {work}
+            </MenuItem>
+        ))}
+        </TextField>
+        <TextField
+            id="standard-search"
+            label={texts.search}
+            value={search}
+            ref={inputRef}
+            onChange={(event) => handleChange(event, 'search')}
+            variant="filled"
+        >
+        </TextField>
+        <ClearIcon
             size="small" 
             className={classes.resetButton} 
             id="reset_button"
-            onClick={resetFilters}>
-                <ClearIcon/>
-            </Button>
+            onClick={resetFilters}
+        />
         </div>
         </form>
         </AppBar>
+        <AppBar position="static" className={classes.MenuUnsubscribe}>
+            <a size="small" onClick={handleOpen} className={classes.unsubscribeButton}>
+            {texts.unsubscribeButton}
+            </a>
+        </AppBar>
+        <UnsubscribeModal 
+            open={open}
+            handleClose={handleClose}
+        />
         </div>
     );
 }

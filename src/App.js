@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import './App.css';
-import UserCard from './components/user_card';
+import UserCard from './components/userCard';
 import Menu from './components/menu';
 
 
@@ -48,8 +48,9 @@ export default class extends Component {
           <Menu
             savedList={this.state.userList}
             setUserList={this.setUserList}
-            cities={[...new Set(this.state.userList.map((user) => {return user.city}))].sort()}
-            countries={[...new Set(this.state.userList.map((user) => {return user.country}))].sort()}
+            cities={[...new Set(window.props.users_list.map((user) => {return user.city}))].sort()}
+            countries={[...new Set(window.props.users_list.map((user) => {return user.country}))].sort()}
+            works={[...new Set(window.props.users_list.map((user) => {return user.tell_us_more_again}))].sort()}
           />
           {this.state.userList.map((user, index) => {
             return <UserCard 
@@ -57,8 +58,13 @@ export default class extends Component {
             first_name={user.first_name}
             last_name={user.last_name}
             email={user.email}
+            username={user.username}
             city={user.city}
             country={user.country}
+            tell_us_more_again={user.tell_us_more_again}
+            mention={user.mention}
+            linkedin={user.linkedin}
+            profile_image_url={user.profile_image_url}
             />
           })}
         </>
