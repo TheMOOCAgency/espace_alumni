@@ -3,6 +3,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import './App.css';
 import UserCard from './components/userCard';
 import Menu from './components/menu';
+import UnsubscribeButton from './components/unsubscribeButton'
 
 
 export default class extends Component {
@@ -67,6 +68,7 @@ export default class extends Component {
             profile_image_url={user.profile_image_url}
             />
           })}
+          <UnsubscribeButton/>
         </>
         }
       </div>

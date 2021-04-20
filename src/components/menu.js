@@ -6,7 +6,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ClearIcon from '@material-ui/icons/Clear';
-import UnsubscribeModal from './unsubscribeModal'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -95,17 +94,6 @@ const useStyles = makeStyles((theme) => ({
     },
     backButton: {
         width: '190px',
-    },
-    MenuUnsubscribe: {
-        width: '500px',
-        margin: '20px auto auto auto',
-        backgroundColor: 'transparent',
-    },
-    unsubscribeButton: {
-        width: '500px',
-        color: 'black',
-        padding: '10px 0px 10px 0px',
-        cursor: 'pointer',
     },
     resetButton : {
         marginTop: '20px',
@@ -263,15 +251,6 @@ export default function PrimarySearchAppBar(props) {
         </div>
         </form>
         </AppBar>
-        <AppBar position="static" className={classes.MenuUnsubscribe}>
-            <a size="small" onClick={handleOpen} className={classes.unsubscribeButton}>
-            {texts.unsubscribeButton}
-            </a>
-        </AppBar>
-        <UnsubscribeModal 
-            open={open}
-            handleClose={handleClose}
-        />
         </div>
     );
 }
