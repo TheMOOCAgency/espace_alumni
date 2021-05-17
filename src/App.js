@@ -51,7 +51,7 @@ export default class extends Component {
             setUserList={this.setUserList}
             cities={[...new Set(window.props.users_list.map((user) => {return user.city}))].sort()}
             countries={[...new Set(window.props.users_list.map((user) => {return user.country}))].sort()}
-            works={[...new Set(window.props.users_list.map((user) => {return user.tell_us_more_again}))].sort()}
+            works={[...new Set(window.props.users_list.map((user) => {return user.tell_us_more}))].sort()}
           />
           {this.state.userList.map((user, index) => {
             return <UserCard 
@@ -62,7 +62,7 @@ export default class extends Component {
             username={user.username}
             city={user.city}
             country={user.country}
-            tell_us_more_again={user.tell_us_more_again}
+            tell_us_more={user.tell_us_more}
             mention={user.mention}
             linkedin={user.linkedin}
             profile_image_url={user.profile_image_url}

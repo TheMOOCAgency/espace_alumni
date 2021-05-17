@@ -43,17 +43,6 @@ export default function SimpleCard(props) {
       return texts.with_distinction
     }
   };
-
-  const completeJobs = {
-    "hotellerie":"Hôtellerie/Sommellerie",
-    "commerce":"Commerce/Vente",
-    "viticulture":"Viticulture/Œnologie ",
-    "marketing":"Marketing/Communication",
-    "droit":"Droit",
-    "journalisme":"Journalisme",
-    "tourisme":"Tourisme",
-    "autre":"Autre"
-  }
   const texts = window.props.texts
 
   return (
@@ -79,7 +68,7 @@ export default function SimpleCard(props) {
               <Grid item xs={12}>
               <WorkIcon style={{ color: 'rgba(200,175,130,1)' }}>icon_metier</WorkIcon>
               <Typography color="textSecondary" className={classes.detail}>
-                {completeJobs[props.tell_us_more_again] || "autre"}
+                {texts.jobs[props.tell_us_more] || texts.jobs["n/a"]}
               </Typography>
               </Grid>
               <Grid item xs={12}>

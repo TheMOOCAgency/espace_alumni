@@ -8,7 +8,7 @@ setTimeout(function() {
         "username": "YuriG",
         "email": "champaniaque@gmail.com",
         "country": "Belgium",
-        "tell_us_more_again": 'caviste',
+        "tell_us_more": 'caviste',
         'profile_image_url' : '/static/images/profiles/default_120.4a5e0900098e.png',
         'mention' : 0,
         'linkedin': ''
@@ -20,7 +20,7 @@ setTimeout(function() {
         "username": "MakatiI",
         "email": "delrosario_ira@yahoo.com",
         "country": "Philippines",
-        "tell_us_more_again": 'caviste',
+        "tell_us_more": 'caviste',
         'profile_image_url' : '/static/images/profiles/default_120.4a5e0900098e.png',
         'mention' : 0,
         'linkedin': '/#'
@@ -32,7 +32,7 @@ setTimeout(function() {
         "username": "FilippoT",
         "email": "filippotacchi@icloud.com",
         "country": "United Kingdom",
-        "tell_us_more_again": 'caviste',
+        "tell_us_more": 'caviste',
         'profile_image_url' : '/static/images/profiles/default_120.4a5e0900098e.png',
         'mention' : 0.95,
         'linkedin': ''
@@ -44,7 +44,7 @@ setTimeout(function() {
         "username": "PaulH",
         "email": "pchoward@btinternet.com",
         "country": "United Kingdom",
-        "tell_us_more_again": 'caviste',
+        "tell_us_more": 'caviste',
         'profile_image_url' : '/static/images/profiles/default_120.4a5e0900098e.png',
         'mention' : 0,
         'linkedin': ''
@@ -56,7 +56,7 @@ setTimeout(function() {
         "last_name": "Tristan-Rangel",
         "email": "r_tristan@icloud.com",
         "country": "USA",
-        "tell_us_more_again": 'vigneron',
+        "tell_us_more": 'vigneron',
         'profile_image_url' : '/static/images/profiles/default_120.4a5e0900098e.png',
         'mention' : 0.96,
         'linkedin': ''
@@ -67,7 +67,7 @@ setTimeout(function() {
         "last_name": "Naidoo",
         "email": "woodstr@saol.com",
         "country": "South Africa",
-        "tell_us_more_again": 'vigneron',
+        "tell_us_more": 'vigneron',
         'profile_image_url' : '/static/images/profiles/default_120.4a5e0900098e.png',
         'mention' : 0,
         "username": "YegasN",
@@ -80,7 +80,7 @@ setTimeout(function() {
         "username": "CharlyT",
         "email": "charlytroilo@gmail.com",
         "country": "France",
-        "tell_us_more_again": 'vigneron',
+        "tell_us_more": 'vigneron',
         'profile_image_url' : '/static/images/profiles/default_120.4a5e0900098e.png',
         'mention' : 1,
         'linkedin': ''
@@ -104,7 +104,37 @@ setTimeout(function() {
       with_distinction : "Avec distinction",
       unsubscribe : "Pour vous désinscrire de l'espace alumni cliquez ici.",
       yes: "oui",
-      no: "non"
+      no: "non",
+      jobs:{
+        "importexport":"Import-Export",
+        "grossiste":"Grossiste",
+        "acheteur":"Acheteur(-euse)",
+        "commercial":"Commercial(e)/Agent commercial(e)",
+        "caviste":"Caviste",
+        "autre_distribution":"Autre dans la distribution",
+        "gerant":"Gérant/Manager",
+        "sommelier":"Sommelier",
+        "chef":"Chef cuisinier",
+        "trateur":"Traiteur",
+        "autre_Restauration":"Autre dans la restauration",
+        "Viticulture":"Viticulture",
+        "eonology":"œnologie",
+        "marketing":"Marketing - Communication",
+        "visite":"Visite et réception",
+        "autre_viticole":"Autre dans le secteur viticole",
+        "journalisme":"Journalisme",
+        "tourisme":"Tourisme",
+        "formation":"Formation",
+        "hotellerie":"Hôtellerie/Sommellerie",
+        "commerce":"Commerce/Vente",
+        "viticulture":"Viticulture/Œnologie ",
+        "marketing":"Marketing/Communication",
+        "droit":"Droit",
+        "journalisme":"Journalisme",
+        "tourisme":"Tourisme",
+        "autre":"Autre",
+        "n/a":"non spécifié"
+      }
     }
   }
 }, 1000);

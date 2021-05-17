@@ -120,7 +120,7 @@ export default function PrimarySearchAppBar(props) {
     };
 
     const getSearch = (user) => {
-        const propertiesListy = ['country', 'tell_us_more_again', 'city', 'first_name', 'last_name']
+        const propertiesListy = ['country', 'tell_us_more', 'city', 'first_name', 'last_name']
         let isInList = false
         propertiesListy.forEach(element => {
             if (user[element].toLowerCase().includes(search.toLowerCase())) {
@@ -131,7 +131,7 @@ export default function PrimarySearchAppBar(props) {
     };
 
     const checkUser = (user) => {
-        const isInFilteredList = (city === '' || user.city === city) && (country === '' || user.country === country) && (work === '' || user.tell_us_more_again === work) && getSearch(user) === true
+        const isInFilteredList = (city === '' || user.city === city) && (country === '' || user.country === country) && (work === '' || user.tell_us_more === work) && getSearch(user) === true
         return isInFilteredList
     };
 
@@ -229,7 +229,7 @@ export default function PrimarySearchAppBar(props) {
         >
         {props.works.map((work, index) => (
             <MenuItem key={index} value={work}>
-            {work}
+            {texts.jobs[work] || texts.jobs["n/a"]}
             </MenuItem>
         ))}
         </TextField>
